@@ -1,4 +1,6 @@
 # Cloneable
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FDandyLyons%2FCloneable%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/DandyLyons/Cloneable)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FDandyLyons%2FCloneable%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/DandyLyons/Cloneable)
 
 This simple Swift library provides the `Cloneable` protocol, which allows you to easily create a deep copy of any object that conforms to it. This is useful when you 
 want to copy the value of a reference type without sharing the same reference. Because they have different references, changes to the original object will not affect the
