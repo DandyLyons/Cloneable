@@ -8,6 +8,8 @@ copied object and vice versa.
 To conform to the `Cloneable` protocol, simply implement the `init(cloning: Self)` initializer in your type. This initializer should perform a deep copy of the object. For more
 information about the difference between a deep copy and a shallow copy, see [this article from Geeks for Geeks](https://www.geeksforgeeks.org/difference-between-shallow-and-deep-copy-of-a-class/).
 
+By conforming to the `Cloneable` protocol, you are promising that your implementation will create a deep copy of the object (not just a shallow copy). 
+
 ### Cloning Versus Copying
 For the sake of clarity let's define some terminology. In Swift we can copy values or references. When we copy a value, we are creating a new instance of the value. When we copy a reference, we are creating a new reference to the same instance. In the context of this library, whenever we use the term "clone" what we really mean is "deep copy". This means that we are copying the value of a reference type, not the reference itself. We are creating an entirely new instance of the object, not just a new reference to the same object.
 
@@ -62,6 +64,10 @@ extension ValueType: Cloneable {
     }
 }
 ```
+
+It's also important to note that just because your value type contains a reference type, doesn't mean that it will share references. This is because it is a common pattern in Swift to implement value semantics using copy-on-write. In other words, many value types already have built-in mechanisms to make deep copies of their reference type properties. (For example, this is how `Array` and `String` work. Under the hood, they hold onto a reference type, but they make deep copies of it when necessary.)
+
+In general, it is not beneficial or recommended to conform a value type to the `Cloneable` protocol unless you have a specific need to do so.
 
 ### Cloning Using Codable
 If your type conforms to `Codable`, then the `Cloneable` protocol will automatically generate a method called 
